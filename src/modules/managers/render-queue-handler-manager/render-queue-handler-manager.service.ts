@@ -3,9 +3,10 @@ import { Injectable, Logger } from '@nestjs/common';
 import { RenderQueueService } from '../../fundamentals/render-queue/render-queue.service';
 import {
   ProviderEntityType,
-  ProviderOperationStatus, ProviderProcessingStage,
+  ProviderOperationStatus,
+  ProviderProcessingStage,
   RenderQueue,
-  RenderQueueStatus
+  RenderQueueStatus,
 } from '@prisma/client';
 import { IEstimateDurationResponse } from './types';
 import { ProviderLogsService } from '../../fundamentals/provider-logs/provider-logs.service';
@@ -84,27 +85,38 @@ export class RenderQueueHandlerManagerService {
   }
 
   private async fakeRender(): Promise<void> {
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     Logger.debug(`Render started at: ${new Date()}`);
 
     await this.providerLogsService.createLogRecord({
       stage: ProviderProcessingStage.VIDEO_RENDER_START,
       entityType: ProviderEntityType.RENDER_SERVICE,
       status: ProviderOperationStatus.SUCCESS,
-      message: 'Processing successfully started'
+      message: 'Processing successfully started',
     });
 
     let counter = 0;
-    const intervalId = setInterval(() => {
-      Logger.debug(`Rendered ${counter}% of current video`);
-      if (counter === 100) clearInterval(intervalId);
-      counter++;
-    }, 100);
+    try {
+      const intervalId = setInterval(() => {
+        Logger.debug(`Rendered ${counter}% of current video`);
+        if (counter === 100) clearInterval(intervalId);
+        counter++;
+      }, 100);
 
-    await this.providerLogsService.createLogRecord({
-      stage: ProviderProcessingStage.VIDEO_RENDER_END,
-      entityType: ProviderEntityType.RENDER_SERVICE,
-      status: ProviderOperationStatus.SUCCESS,
-      message: 'Processing successfully finished'
-    });
+      await this.providerLogsService.createLogRecord({
+        stage: ProviderProcessingStage.VIDEO_RENDER_END,
+        entityType: ProviderEntityType.RENDER_SERVICE,
+        status: ProviderOperationStatus.SUCCESS,
+        message: 'Processing successfully finished',
+      });
+    } catch (error) {
+      await this.providerLogsService.createLogRecord({
+        stage: ProviderProcessingStage.VIDEO_RENDER_END,
+        entityType: ProviderEntityType.RENDER_SERVICE,
+        status: ProviderOperationStatus.ERROR,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+        message: error.message,
+      });
+    }
   }
 }
