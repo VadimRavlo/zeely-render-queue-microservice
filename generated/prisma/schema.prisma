@@ -74,7 +74,8 @@ model RenderQueue {
 }
 
 enum ProviderProcessingStage {
-  RENDER_PROCESS
+  VIDEO_RENDER_START
+  VIDEO_RENDER_END
 }
 
 enum ProviderEntityType {

@@ -202,7 +202,8 @@ exports.RenderQueueStatus = exports.$Enums.RenderQueueStatus = {
 };
 
 exports.ProviderProcessingStage = exports.$Enums.ProviderProcessingStage = {
-  RENDER_PROCESS: 'RENDER_PROCESS'
+  VIDEO_RENDER_START: 'VIDEO_RENDER_START',
+  VIDEO_RENDER_END: 'VIDEO_RENDER_END'
 };
 
 exports.ProviderEntityType = exports.$Enums.ProviderEntityType = {

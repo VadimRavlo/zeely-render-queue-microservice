@@ -6,9 +6,9 @@ import { ProviderLogs } from '@prisma/client';
 export class ProviderLogsService {
   constructor(private prismaService: PrismaService) {}
 
-  public async createLogRecord(dto: ProviderLogs): Promise<ProviderLogs> {
+  public async createLogRecord(dto: Omit<ProviderLogs, 'id' | 'createdAt' | 'data'>): Promise<ProviderLogs> {
     return await this.prismaService.providerLogs.create({
-      data: { ...dto, data: dto.data ?? undefined },
+      data: dto,
     });
   }
 }

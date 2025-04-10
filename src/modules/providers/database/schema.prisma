@@ -1,6 +1,7 @@
 generator client {
   provider      = "prisma-client-js"
-  output        = "../../../../generated/prisma"
+  output        = "../../../../node_modules/.prisma/client"
+  // output        = "../../../../generated/prisma"
   binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
 }
 
@@ -74,7 +75,8 @@ model RenderQueue {
 }
 
 enum ProviderProcessingStage {
-  RENDER_PROCESS
+  VIDEO_RENDER_START
+  VIDEO_RENDER_END
 }
 
 enum ProviderEntityType {

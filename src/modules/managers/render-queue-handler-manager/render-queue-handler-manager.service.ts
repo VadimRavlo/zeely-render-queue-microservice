@@ -1,12 +1,21 @@
 import { Injectable, Logger } from '@nestjs/common';
 
 import { RenderQueueService } from '../../fundamentals/render-queue/render-queue.service';
-import { RenderQueue, RenderQueueStatus } from '@prisma/client';
+import {
+  ProviderEntityType,
+  ProviderOperationStatus, ProviderProcessingStage,
+  RenderQueue,
+  RenderQueueStatus
+} from '@prisma/client';
 import { IEstimateDurationResponse } from './types';
+import { ProviderLogsService } from '../../fundamentals/provider-logs/provider-logs.service';
 
 @Injectable()
 export class RenderQueueHandlerManagerService {
-  constructor(private readonly renderQueueService: RenderQueueService) {}
+  constructor(
+    private readonly renderQueueService: RenderQueueService,
+    private readonly providerLogsService: ProviderLogsService,
+  ) {}
 
   async getList(): Promise<RenderQueue[]> {
     return this.renderQueueService.getRenderQueue();
@@ -66,9 +75,36 @@ export class RenderQueueHandlerManagerService {
     id: string,
     dto: Partial<RenderQueue>,
   ): Promise<RenderQueue> {
+    await this.fakeRender();
+
     return await this.renderQueueService.updateRenderQueueEntryById(id, {
       ...dto,
       status: RenderQueueStatus.READY,
+    });
+  }
+
+  private async fakeRender(): Promise<void> {
+    Logger.debug(`Render started at: ${new Date()}`);
+
+    await this.providerLogsService.createLogRecord({
+      stage: ProviderProcessingStage.VIDEO_RENDER_START,
+      entityType: ProviderEntityType.RENDER_SERVICE,
+      status: ProviderOperationStatus.SUCCESS,
+      message: 'Processing successfully started'
+    });
+
+    let counter = 0;
+    const intervalId = setInterval(() => {
+      Logger.debug(`Rendered ${counter}% of current video`);
+      if (counter === 100) clearInterval(intervalId);
+      counter++;
+    }, 100);
+
+    await this.providerLogsService.createLogRecord({
+      stage: ProviderProcessingStage.VIDEO_RENDER_END,
+      entityType: ProviderEntityType.RENDER_SERVICE,
+      status: ProviderOperationStatus.SUCCESS,
+      message: 'Processing successfully finished'
     });
   }
 }

@@ -65,7 +65,8 @@ export type RenderQueuePriority = (typeof RenderQueuePriority)[keyof typeof Rend
 
 
 export const ProviderProcessingStage: {
-  RENDER_PROCESS: 'RENDER_PROCESS'
+  VIDEO_RENDER_START: 'VIDEO_RENDER_START',
+  VIDEO_RENDER_END: 'VIDEO_RENDER_END'
 };
 
 export type ProviderProcessingStage = (typeof ProviderProcessingStage)[keyof typeof ProviderProcessingStage]
