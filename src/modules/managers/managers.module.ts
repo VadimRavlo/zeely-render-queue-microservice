@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
+import { RenderQueueHandlerManagerModule } from './render-queue-handler-manager/render-queue-handler-manager.module';
 
-const modules = [];
+const modules = [RenderQueueHandlerManagerModule];
 
 @Module({
   imports: modules,

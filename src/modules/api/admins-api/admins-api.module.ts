@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
+import { AdminRenderQueueApiModule } from './estimation-api/render-queue-api.module';
 
-const modules = [];
+const modules = [AdminRenderQueueApiModule];
 
 @Module({
   imports: modules,

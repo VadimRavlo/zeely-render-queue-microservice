@@ -1,23 +1,33 @@
-import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../providers/database/prisma.service';
-import { RenderQueue } from '@prisma/client';
+import { RenderQueue, RenderQueueStatus } from '@prisma/client';
 
 @Injectable()
-export class RenderQueueService implements OnModuleInit {
+export class RenderQueueService {
   constructor(private prismaService: PrismaService) {}
 
-  async onModuleInit(): Promise<void> {
-    const renderQueue = await this.getRenderQueue();
-    Logger.debug(renderQueue);
-  }
-
   public async getRenderQueue(): Promise<RenderQueue[]> {
-    return await this.prismaService.renderQueue.findMany();
+    return await this.prismaService.renderQueue.findMany({
+      include: { video: { include: { media: { include: { image: true } } } } },
+    });
   }
 
-  public async getRenderQueuesEntryById(id: string): Promise<RenderQueue> {
-    return await this.prismaService.renderQueue.findFirstOrThrow({
+  public async getRenderQueuesEntryById(
+    id: string,
+  ): Promise<RenderQueue | null> {
+    return await this.prismaService.renderQueue.findUnique({
       where: { id },
+      include: { video: { include: { media: { include: { image: true } } } } },
+    });
+  }
+
+  public async getFirstEntryByStatus(
+    statuses: RenderQueueStatus[],
+  ): Promise<RenderQueue | null> {
+    return await this.prismaService.renderQueue.findFirst({
+      where: { status: { in: statuses } },
+      orderBy: { createdAt: `asc` },
+      include: { video: { include: { media: { include: { image: true } } } } },
     });
   }
 
@@ -25,7 +35,7 @@ export class RenderQueueService implements OnModuleInit {
     return await this.prismaService.renderQueue.create({ data: dto });
   }
 
-  public async updateRenderQueueEntry(
+  public async updateRenderQueueEntryById(
     id: string,
     dto: Partial<RenderQueue>,
   ): Promise<RenderQueue> {
