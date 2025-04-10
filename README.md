@@ -48,7 +48,6 @@ In case creating a new service, module, controller, entity or spec file, please 
 * all providers, like database, redis, message queues, external APIs should be stored by `src/providers`
 * in order to provide additional logs security, you should use logger, stored by `src/logger`
 * directory `src/modules` uses default file structure:
-    * `src/modules/configurations` only to store configuration service with DTO for `.env` file (in order to check validity of `.env` content)
     * `src/modules/fundamentals` only to store low-level services with access only to related database's table/entity
     * `src/modules/providers` only to store low-level providers services (database, queues, auth, file providers, cache providers)
     * `src/modules/managers` to store services with complicated logic with access to more than 1 service from fundamentals or providers
