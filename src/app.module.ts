@@ -5,9 +5,16 @@ import { ProvidersModule } from './modules/providers/providers.module';
 import { ManagersModule } from './modules/managers/managers.module';
 import { AdminsApiModule } from './modules/api/admins-api/admins-api.module';
 import { CommonApiModule } from './modules/api/common-api/common-api.module';
+import { FundamentalsModule } from './modules/fundamentals/fundamentals.module';
 
 @Module({
-  imports: [ProvidersModule, ManagersModule, AdminsApiModule, CommonApiModule],
+  imports: [
+    ProvidersModule,
+    FundamentalsModule,
+    ManagersModule,
+    AdminsApiModule,
+    CommonApiModule,
+  ],
   controllers: [],
   providers: [RenderQueueService, PrismaService],
 })

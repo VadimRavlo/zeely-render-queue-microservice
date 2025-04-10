@@ -237,11 +237,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://wadyan:asdf4gds@localhost:5432/zeely_render_queue_local?schema=public"
+        "value": null
       }
     }
   },

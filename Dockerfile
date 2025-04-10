@@ -8,6 +8,7 @@ WORKDIR /opt/app/
 
 RUN npm ci
 COPY src /opt/app/src/
+RUN npx prisma generate
 RUN npm run build
 
 ENV NODE_OPTIONS="--enable-source-maps"
