@@ -4731,7 +4731,7 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     priority: $Enums.RenderQueuePriority
-    setUpScriptId: string
+    setUpScriptId: string | null
     templateId: string
     status: $Enums.RenderQueueStatus
     errorText: string | null
@@ -4832,7 +4832,7 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       priority: $Enums.RenderQueuePriority
-      setUpScriptId: string
+      setUpScriptId: string | null
       templateId: string
       status: $Enums.RenderQueueStatus
       errorText: string | null
@@ -7116,7 +7116,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"RenderQueue"> | Date | string
     updatedAt?: DateTimeFilter<"RenderQueue"> | Date | string
     priority?: EnumRenderQueuePriorityFilter<"RenderQueue"> | $Enums.RenderQueuePriority
-    setUpScriptId?: UuidFilter<"RenderQueue"> | string
+    setUpScriptId?: UuidNullableFilter<"RenderQueue"> | string | null
     templateId?: UuidFilter<"RenderQueue"> | string
     status?: EnumRenderQueueStatusFilter<"RenderQueue"> | $Enums.RenderQueueStatus
     errorText?: StringNullableFilter<"RenderQueue"> | string | null
@@ -7130,7 +7130,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     priority?: SortOrder
-    setUpScriptId?: SortOrder
+    setUpScriptId?: SortOrderInput | SortOrder
     templateId?: SortOrder
     status?: SortOrder
     errorText?: SortOrderInput | SortOrder
@@ -7147,7 +7147,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"RenderQueue"> | Date | string
     updatedAt?: DateTimeFilter<"RenderQueue"> | Date | string
     priority?: EnumRenderQueuePriorityFilter<"RenderQueue"> | $Enums.RenderQueuePriority
-    setUpScriptId?: UuidFilter<"RenderQueue"> | string
+    setUpScriptId?: UuidNullableFilter<"RenderQueue"> | string | null
     templateId?: UuidFilter<"RenderQueue"> | string
     status?: EnumRenderQueueStatusFilter<"RenderQueue"> | $Enums.RenderQueueStatus
     errorText?: StringNullableFilter<"RenderQueue"> | string | null
@@ -7161,7 +7161,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     priority?: SortOrder
-    setUpScriptId?: SortOrder
+    setUpScriptId?: SortOrderInput | SortOrder
     templateId?: SortOrder
     status?: SortOrder
     errorText?: SortOrderInput | SortOrder
@@ -7180,7 +7180,7 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"RenderQueue"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"RenderQueue"> | Date | string
     priority?: EnumRenderQueuePriorityWithAggregatesFilter<"RenderQueue"> | $Enums.RenderQueuePriority
-    setUpScriptId?: UuidWithAggregatesFilter<"RenderQueue"> | string
+    setUpScriptId?: UuidNullableWithAggregatesFilter<"RenderQueue"> | string | null
     templateId?: UuidWithAggregatesFilter<"RenderQueue"> | string
     status?: EnumRenderQueueStatusWithAggregatesFilter<"RenderQueue"> | $Enums.RenderQueueStatus
     errorText?: StringNullableWithAggregatesFilter<"RenderQueue"> | string | null
@@ -7412,7 +7412,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     priority?: $Enums.RenderQueuePriority
-    setUpScriptId: string
+    setUpScriptId?: string | null
     templateId: string
     status?: $Enums.RenderQueueStatus
     errorText?: string | null
@@ -7425,7 +7425,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     priority?: $Enums.RenderQueuePriority
-    setUpScriptId: string
+    setUpScriptId?: string | null
     templateId: string
     status?: $Enums.RenderQueueStatus
     errorText?: string | null
@@ -7438,7 +7438,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     priority?: EnumRenderQueuePriorityFieldUpdateOperationsInput | $Enums.RenderQueuePriority
-    setUpScriptId?: StringFieldUpdateOperationsInput | string
+    setUpScriptId?: NullableStringFieldUpdateOperationsInput | string | null
     templateId?: StringFieldUpdateOperationsInput | string
     status?: EnumRenderQueueStatusFieldUpdateOperationsInput | $Enums.RenderQueueStatus
     errorText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7451,7 +7451,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     priority?: EnumRenderQueuePriorityFieldUpdateOperationsInput | $Enums.RenderQueuePriority
-    setUpScriptId?: StringFieldUpdateOperationsInput | string
+    setUpScriptId?: NullableStringFieldUpdateOperationsInput | string | null
     templateId?: StringFieldUpdateOperationsInput | string
     status?: EnumRenderQueueStatusFieldUpdateOperationsInput | $Enums.RenderQueueStatus
     errorText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7464,7 +7464,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     priority?: $Enums.RenderQueuePriority
-    setUpScriptId: string
+    setUpScriptId?: string | null
     templateId: string
     status?: $Enums.RenderQueueStatus
     errorText?: string | null
@@ -7477,7 +7477,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     priority?: EnumRenderQueuePriorityFieldUpdateOperationsInput | $Enums.RenderQueuePriority
-    setUpScriptId?: StringFieldUpdateOperationsInput | string
+    setUpScriptId?: NullableStringFieldUpdateOperationsInput | string | null
     templateId?: StringFieldUpdateOperationsInput | string
     status?: EnumRenderQueueStatusFieldUpdateOperationsInput | $Enums.RenderQueueStatus
     errorText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7489,7 +7489,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     priority?: EnumRenderQueuePriorityFieldUpdateOperationsInput | $Enums.RenderQueuePriority
-    setUpScriptId?: StringFieldUpdateOperationsInput | string
+    setUpScriptId?: NullableStringFieldUpdateOperationsInput | string | null
     templateId?: StringFieldUpdateOperationsInput | string
     status?: EnumRenderQueueStatusFieldUpdateOperationsInput | $Enums.RenderQueueStatus
     errorText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7809,6 +7809,18 @@ export namespace Prisma {
     not?: NestedEnumRenderQueuePriorityFilter<$PrismaModel> | $Enums.RenderQueuePriority
   }
 
+  export type UuidNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidNullableFilter<$PrismaModel> | string | null
+  }
+
   export type EnumRenderQueueStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.RenderQueueStatus | EnumRenderQueueStatusFieldRefInput<$PrismaModel>
     in?: $Enums.RenderQueueStatus[] | ListEnumRenderQueueStatusFieldRefInput<$PrismaModel>
@@ -7889,6 +7901,21 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumRenderQueuePriorityFilter<$PrismaModel>
     _max?: NestedEnumRenderQueuePriorityFilter<$PrismaModel>
+  }
+
+  export type UuidNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type EnumRenderQueueStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -8184,12 +8211,12 @@ export namespace Prisma {
     set?: $Enums.RenderQueuePriority
   }
 
-  export type EnumRenderQueueStatusFieldUpdateOperationsInput = {
-    set?: $Enums.RenderQueueStatus
-  }
-
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type EnumRenderQueueStatusFieldUpdateOperationsInput = {
+    set?: $Enums.RenderQueueStatus
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -8349,6 +8376,17 @@ export namespace Prisma {
     not?: NestedEnumRenderQueuePriorityFilter<$PrismaModel> | $Enums.RenderQueuePriority
   }
 
+  export type NestedUuidNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedEnumRenderQueueStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.RenderQueueStatus | EnumRenderQueueStatusFieldRefInput<$PrismaModel>
     in?: $Enums.RenderQueueStatus[] | ListEnumRenderQueueStatusFieldRefInput<$PrismaModel>
@@ -8389,6 +8427,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumRenderQueuePriorityFilter<$PrismaModel>
     _max?: NestedEnumRenderQueuePriorityFilter<$PrismaModel>
+  }
+
+  export type NestedUuidNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumRenderQueueStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -8488,7 +8540,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     priority?: $Enums.RenderQueuePriority
-    setUpScriptId: string
+    setUpScriptId?: string | null
     templateId: string
     status?: $Enums.RenderQueueStatus
     errorText?: string | null
@@ -8500,7 +8552,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     priority?: $Enums.RenderQueuePriority
-    setUpScriptId: string
+    setUpScriptId?: string | null
     templateId: string
     status?: $Enums.RenderQueueStatus
     errorText?: string | null
@@ -8561,7 +8613,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"RenderQueue"> | Date | string
     updatedAt?: DateTimeFilter<"RenderQueue"> | Date | string
     priority?: EnumRenderQueuePriorityFilter<"RenderQueue"> | $Enums.RenderQueuePriority
-    setUpScriptId?: UuidFilter<"RenderQueue"> | string
+    setUpScriptId?: UuidNullableFilter<"RenderQueue"> | string | null
     templateId?: UuidFilter<"RenderQueue"> | string
     status?: EnumRenderQueueStatusFilter<"RenderQueue"> | $Enums.RenderQueueStatus
     errorText?: StringNullableFilter<"RenderQueue"> | string | null
@@ -8783,7 +8835,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     priority?: $Enums.RenderQueuePriority
-    setUpScriptId: string
+    setUpScriptId?: string | null
     templateId: string
     status?: $Enums.RenderQueueStatus
     errorText?: string | null
@@ -8800,7 +8852,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     priority?: EnumRenderQueuePriorityFieldUpdateOperationsInput | $Enums.RenderQueuePriority
-    setUpScriptId?: StringFieldUpdateOperationsInput | string
+    setUpScriptId?: NullableStringFieldUpdateOperationsInput | string | null
     templateId?: StringFieldUpdateOperationsInput | string
     status?: EnumRenderQueueStatusFieldUpdateOperationsInput | $Enums.RenderQueueStatus
     errorText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8812,7 +8864,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     priority?: EnumRenderQueuePriorityFieldUpdateOperationsInput | $Enums.RenderQueuePriority
-    setUpScriptId?: StringFieldUpdateOperationsInput | string
+    setUpScriptId?: NullableStringFieldUpdateOperationsInput | string | null
     templateId?: StringFieldUpdateOperationsInput | string
     status?: EnumRenderQueueStatusFieldUpdateOperationsInput | $Enums.RenderQueueStatus
     errorText?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8824,7 +8876,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     priority?: EnumRenderQueuePriorityFieldUpdateOperationsInput | $Enums.RenderQueuePriority
-    setUpScriptId?: StringFieldUpdateOperationsInput | string
+    setUpScriptId?: NullableStringFieldUpdateOperationsInput | string | null
     templateId?: StringFieldUpdateOperationsInput | string
     status?: EnumRenderQueueStatusFieldUpdateOperationsInput | $Enums.RenderQueueStatus
     errorText?: NullableStringFieldUpdateOperationsInput | string | null

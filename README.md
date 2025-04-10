@@ -50,6 +50,7 @@ In case creating a new service, module, controller, entity or spec file, please 
 * directory `src/modules` uses default file structure:
     * `src/modules/configurations` only to store configuration service with DTO for `.env` file (in order to check validity of `.env` content)
     * `src/modules/fundamentals` only to store low-level services with access only to related database's table/entity
+    * `src/modules/providers` only to store low-level providers services (database, queues, auth, file providers, cache providers)
     * `src/modules/managers` to store services with complicated logic with access to more than 1 service from fundamentals or providers
     * `src/modules/apis` for all provided by app controllers with related modules/services:
         * `src/modules/apis/common-api` - all provided by app APIs for common part of app

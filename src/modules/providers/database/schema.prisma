@@ -62,7 +62,7 @@ model RenderQueue {
   createdAt     DateTime            @default(now()) @db.Timestamptz
   updatedAt     DateTime            @default(now()) @updatedAt @db.Timestamptz
   priority      RenderQueuePriority @default(LOW)
-  setUpScriptId String              @db.Uuid
+  setUpScriptId String?             @db.Uuid
   templateId    String              @db.Uuid
   status        RenderQueueStatus   @default(WAITING)
   errorText     String?
