@@ -10,6 +10,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { AdminRenderQueueApiService } from './render-queue-api.service';
 import { RenderQueue } from '@prisma/client';
+import { IEstimateDurationResponse } from '../../../managers/render-queue-handler-manager/types';
 
 @Controller('v1/admins/renderQueue')
 @ApiTags('Admin Render Queue API')
@@ -17,6 +18,17 @@ export class AdminRenderQueueApiController {
   constructor(
     private readonly renderQueueApiService: AdminRenderQueueApiService,
   ) {}
+
+  @Get('estimateReadiness')
+  @ApiOperation({ summary: `Get new video render readiness estimation` })
+  // @ApiOkResponse(DTO)
+  async estimateReadiness(
+    @Body() dto: { videoDurationSeconds: number },
+  ): Promise<IEstimateDurationResponse> {
+    return this.renderQueueApiService.estimateReadiness(
+      dto.videoDurationSeconds,
+    );
+  }
 
   @Get()
   @ApiOperation({ summary: `Get render queue element` })

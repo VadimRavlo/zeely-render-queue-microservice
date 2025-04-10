@@ -12,6 +12,14 @@ export class RenderQueueService {
     });
   }
 
+  public async getFollowingRenderQueueCount(): Promise<number> {
+    return await this.prismaService.renderQueue.count({
+      where: {
+        status: { in: [RenderQueueStatus.WAITING, RenderQueueStatus.READY] },
+      },
+    });
+  }
+
   public async getRenderQueuesEntryById(
     id: string,
   ): Promise<RenderQueue | null> {

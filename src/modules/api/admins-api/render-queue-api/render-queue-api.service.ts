@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { RenderQueueHandlerManagerService } from '../../../managers/render-queue-handler-manager/render-queue-handler-manager.service';
 import { RenderQueue } from '@prisma/client';
+import { IEstimateDurationResponse } from '../../../managers/render-queue-handler-manager/types';
 
 @Injectable()
 export class AdminRenderQueueApiService {
@@ -10,6 +11,14 @@ export class AdminRenderQueueApiService {
 
   async getList(): Promise<RenderQueue[]> {
     return this.renderQueueHandlerManagerService.getList();
+  }
+
+  async estimateReadiness(
+    videoDurationSeconds: number,
+  ): Promise<IEstimateDurationResponse> {
+    return this.renderQueueHandlerManagerService.estimateReadiness(
+      videoDurationSeconds,
+    );
   }
 
   async getElementById(id: string): Promise<RenderQueue> {
